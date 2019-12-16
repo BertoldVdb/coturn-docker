@@ -24,10 +24,10 @@ if [ "x$TURN_SECRET" != "x" ]; then
 fi
 
 if [ "x$SSL" != "x" ]; then
-    if [ ! -f $SSL ]; then
+    while [ ! -f $SSL ]; do
         echo "$SSL does not exist"
-        exit
-    fi
+        sleep 1
+    done
     echo "cert=$SSL" >> $FILE
     echo "pkey=$SSL" >> $FILE
 else

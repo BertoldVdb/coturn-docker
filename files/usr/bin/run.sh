@@ -18,9 +18,8 @@ no-multicast-peers
 no-tlsv1" > $FILE
 
 #Add secret if needed
-P=$TURN_SECRET
-if [ "x$P" != "x" ]; then
-    echo "static-auth-secret=$AUTH_SECRET" >> $FILE
+if [ "x$TURN_SECRET" != "x" ]; then
+    echo "static-auth-secret=$TURN_SECRET" >> $FILE
     echo "use-auth-secret" >> $FILE
 fi
 

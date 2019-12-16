@@ -9,6 +9,7 @@ min-port=49152
 max-port=65535
 verbose
 fingerprint
+log-file=stdout
 lt-cred-mech
 realm=$REALM
 stale-nonce=600

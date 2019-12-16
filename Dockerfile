@@ -65,8 +65,8 @@ RUN apk update \
         libcrypto1.1 libssl1.1
 
 #Install dumb-init
-RUN wget -O /usr/bin/dumb-init https://github.com/Yelp/dumb-init/releases/download/v1.2.2/dumb-init_1.2.2_amd64
-RUN chmod +x /usr/bin/dumb-init
+RUN wget -O /usr/bin/dumb-init https://github.com/Yelp/dumb-init/releases/download/v1.2.2/dumb-init_1.2.2_amd64 \
+ && chmod +x /usr/bin/dumb-init
 
 #Copy server binary
 COPY --from=builder /usr/bin/turnserver /usr/bin/

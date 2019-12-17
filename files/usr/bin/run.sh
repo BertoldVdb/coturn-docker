@@ -10,11 +10,12 @@ max-port=65535
 verbose
 fingerprint
 log-file=stdout
-lt-cred-mech
 realm=$REALM
 stale-nonce=600
 dh-file=/etc/dh2048.pem
 no-multicast-peers
+listening-ip=172.54.0.1
+listening-ip=127.0.0.1
 no-tlsv1" > $FILE
 
 #Add secret if needed

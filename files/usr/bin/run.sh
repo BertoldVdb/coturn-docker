@@ -19,9 +19,7 @@ listening-ip=127.0.0.1
 no-cli
 no-tlsv1
 tcp-use-proxy
-denied-peer-ip=172.16.0.0-172.31.255.255
-denied-peer-ip=192.168.0.0-192.168.255.255
-denied-peer-ip=10.0.0.0-10.255.255.255" > $FILE
+denied-peer-ip=172.30.0.0-172.30.0.255" > $FILE
 
 #Add secret if needed
 if [ "x$TURN_SECRET" != "x" ]; then

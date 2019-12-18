@@ -14,9 +14,14 @@ realm=$REALM
 stale-nonce=600
 dh-file=/etc/dh2048.pem
 no-multicast-peers
-listening-ip=172.54.0.1
+listening-ip=172.30.0.1
 listening-ip=127.0.0.1
-no-tlsv1" > $FILE
+no-cli
+no-tlsv1
+tcp-use-proxy
+denied-peer-ip=172.16.0.0-172.31.255.255
+denied-peer-ip=192.168.0.0-192.168.255.255
+denied-peer-ip=10.0.0.0-10.255.255.255" > $FILE
 
 #Add secret if needed
 if [ "x$TURN_SECRET" != "x" ]; then

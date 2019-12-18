@@ -25,20 +25,17 @@ RUN apk update \
  # Install tools for building
  && apk add --no-cache --virtual .tool-deps \
         coreutils autoconf g++ libtool make \
-        # mongo-c-driver building dependencies
-        cmake \
+        git \
+        cmake 
  # Download and prepare Coturn sources
- && curl -fL -o /tmp/coturn.tar.gz https://coturn.net/turnserver/v4.5.0.8/turnserver-4.5.0.8.tar.gz \
- && tar -xzf /tmp/coturn.tar.gz -C /tmp/ \
- && cd /tmp/turnserver-* \
+ADD https://api.github.com/repos/WaxieSDR/coturn/git/refs/heads/master version.json
+RUN cd /tmp && git clone https://github.com/WaxieSDR/coturn.git \
+ && cd /tmp/coturn \
  # Build Coturn from sources
  && ./configure --prefix=/usr \
         --turndbdir=/var/lib/coturn \
         --disable-rpath \
         --sysconfdir=/etc/coturn \
-        --mandir=/tmp/coturn/man \
-        --docsdir=/tmp/coturn/docs \
-        --examplesdir=/tmp/coturn/examples \
  && make \
  # Install and configure Coturn
  && make install \

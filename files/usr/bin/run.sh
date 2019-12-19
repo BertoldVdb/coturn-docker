@@ -5,21 +5,25 @@ FILE=/tmp/turnserver.conf
 REALM=`hexdump -n 8 -e '2/4 "%08x"' /dev/urandom`.turn.bertold.org
 
 echo "listening-port=3478
+tls-listening-port=443
 min-port=49152
 max-port=65535
 verbose
 fingerprint
 log-file=stdout
 realm=$REALM
-stale-nonce=600
 dh-file=/etc/dh2048.pem
 no-multicast-peers
 listening-ip=172.30.0.1
 listening-ip=127.0.0.1
 no-cli
 no-tlsv1
-tcp-use-proxy
 denied-peer-ip=172.30.0.0-172.30.0.255" > $FILE
+
+#Using proxy?
+if [ "x$PROXY_PORT" != "x" ];then
+    echo "tcp-proxy-port=$PROXY_PORT" >> $FILE
+fi
 
 #Add secret if needed
 if [ "x$TURN_SECRET" != "x" ]; then

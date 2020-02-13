@@ -20,6 +20,11 @@ no-cli
 no-tlsv1
 denied-peer-ip=172.30.0.0-172.30.0.255" > $FILE
 
+#Extra verbose?
+if [ "x$EXTRA_VERBOSE" != "x" ];then
+    echo "Verbose" >> $FILE
+fi
+
 #Using proxy?
 if [ "x$PROXY_PORT" != "x" ];then
     echo "tcp-proxy-port=$PROXY_PORT" >> $FILE
